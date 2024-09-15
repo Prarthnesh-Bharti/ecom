@@ -4,7 +4,7 @@ const MongoClient = mongodb.MongoClient;
 let database;
 
 async function connectToDatabase() {
-  const dburl = process.env.MONGODB_URL || 'mongodb://localhost:27017';
+  const dburl = process.env.MONGODB_URL ;
   try {
     const client = await MongoClient.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true });
     database = client.db('online-shop');
