@@ -5,7 +5,12 @@ const MongoClient = mongodb.MongoClient;
 let database;
 
 async function connectToDatabase() {
-  const client = await MongoClient.connect('mongodb://0.0.0.0:27017');
+  let dburl = 'mongodb://0.0.0.0:27017';
+  if(process.env.MONGODB_URL){
+    dburl = process.env.MONGODB_URL ;
+  }
+    
+  const client = await MongoClient.connect(dburl);
   database = client.db('online-shop');
 }
 
